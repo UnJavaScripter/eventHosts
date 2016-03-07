@@ -1,0 +1,98 @@
+<!-- <router-outlet></router-outlet> -->
+<div flex layout="row">
+    <div flex>
+        <map [hosts]="hostsArray" (aHostWasSelected)="selected_from_map($event)" [clearSelected]="clearSelectedHost" [selectThis]="hostToShowOnMap"></map>
+    </div>
+
+    <aside>
+        <div flex class="side-content">
+            <div *ngIf="selectedHost && selectedHost.name" flex layout="column">
+                <div class="floating-items" (click)="clearCurrent()">
+                    <span class="go-back-button icon-arrow-left2"></span>
+                </div>
+                <div class="host-gallery" flex="50" style="background-image: url('{{selectedHost.pics.header}}')">
+                    <h2 class="image-placeholder-text" *ngIf="!selectedHost.pics.header">{{selectedHost.name}}</h2>
+                </div>
+                
+                <div class="host-description" flex layout="column">
+                    <div class="host-description__item" flex="95" layout="row" *ngIf="selectedHost.pics.header">
+                        <h2>{{selectedHost.name}}</h2>
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row">
+                        <div class="host-description__item__icon icon-location2"></div>
+                        <div class="host-description__item__content" flex align="start">
+                            <label>Located at</label>
+                            &nbsp;
+                            <div class="host-description__item__text" flex>{{selectedHost.location.address}}</div>
+                        </div>
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row">
+                        <div class="host-description__item__icon icon-users"></div>
+                        <div class="host-description__item__content" flex align="start">
+                            <label>Capacity for</label>
+                            &nbsp;
+                            <div class="host-description__item__text" flex>{{selectedHost.capacity}}</div>
+                        </div>
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row" layout-wrap="nowrap">
+                        <div class="host-description__item__icon icon-star-full"></div>
+                        <div class="host-description__item__content" flex align="start" layout-wrap="nowrap">
+                            <label>Features</label>
+                            &nbsp;
+                            <div class="host-description__item__text" flex layout="row">
+                                <div *ngFor="#feature of selectedHost.features" flex>
+                                    {{feature}}&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row">
+                        <div class="host-description__item__icon icon-alarm"></div>
+                        <div class="host-description__item__content" flex align="start">
+                            <label>Opening Hours</label>
+                            &nbsp;
+                            <div class="host-description__item__text" flex>{{selectedHost.openingHours.from}} to {{selectedHost.openingHours.to}}</div>
+                        </div>
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row" *ngIf="selectedHost.contact.email">
+                        <div class="host-description__item__icon icon-mail"></div>
+                        <div class="host-description__item__content" flex align="start">
+                            {{selectedHost.contact.email}}
+                        </div>
+
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row" *ngIf="selectedHost.contact.phone">
+                        <div class="host-description__item__icon icon-phone"></div>
+                        <div class="host-description__item__content" flex align="start">
+                            <div class="host-description__item__text">
+                                {{selectedHost.contact.phone}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="host-description__item" flex="95" layout="row">
+                        <div class="host-description__item__icon icon-earth"></div>
+                        <div class="host-description__item__content" flex align="start">
+                            <div class="host-description__item__text">
+                                <a [href]="selectedHost.website">{{selectedHost.website}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div flex class="host-container" *ngIf="!selectedHost || !selectedHost.name ">
+                <div class="host-container__host" *ngFor="#host of hostsArray" layout="row" flex (click)="selected_from_list(host);">
+                    <div class="text-bold" flex align="start">
+                        {{host.name}}
+                    </div>
+                    <div class="host-container__host__address" flex align="end">
+                        {{host.location.address}}
+                    </div>
+                </div>
+            </div>
+            <div class="fab-container" *ngIf="!selectedHost || !selectedHost.name ">
+                <a class="fab" href="https://docs.google.com/forms/d/1tjEZnQ4VQ5EQt9IFfTUK5Fcd0QdyePDBOekX02viNY4/viewform" target="_blank">+</a>
+            </div>
+        </div>
+    </aside>
+</div>
+
