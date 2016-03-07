@@ -1,0 +1,18 @@
+.map-container, .calendar-container {
+    background-color: #222323;
+    margin-bottom: 1em;
+}
+
+.map-container {
+    /*position: relative;*/
+    height: 40em;
+    max-height: 40em;
+    height: 80vh;
+    min-height: 80vh;
+}
+
+.map-container>div#map {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

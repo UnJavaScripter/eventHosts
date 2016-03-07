@@ -1,0 +1,183 @@
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    padding: 0;
+}
+aside {
+    position: fixed;
+    top: 0.6em;
+    left: 0.6em;
+    height: 100%;
+    color: #313A4A;
+    height: 87%;
+    width: 19.5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+
+}
+aside>.side-content {
+    background-color: #F4F4F2;
+}
+
+.host-container {
+    align-self: flex-start;
+    font-family: 'Noto Sans', sans-serif;
+    padding: 0.7em;
+}
+
+.host-container__host {
+    cursor: pointer;
+    border-bottom: 1px solid #E4E4E4;
+    padding-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.host-container__host:first-child {
+    margin-top: 0;
+}
+.host-container__host:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.host-container__host__address {
+    color: #656565;
+    font-size: 0.8em;
+}
+aside>.side-content>div {
+    align-self: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+aside>.side-content  .floating-items {
+    background-color: rgba(255,255,255,0.6);
+    position: absolute;
+    padding: 0.3em;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    max-width: 1em;
+    max-height: 1em;
+    display: flex;
+    justify-content: center;
+    margin: 0.2em;
+    cursor: pointer;
+}
+aside>.side-content  .floating-items>.go-back-button {
+    display: flex;
+    align-items: flex-start;
+}
+aside>.side-content figure {
+    margin: 0;
+}
+
+aside>.side-content .host-gallery {
+    height: 6em;
+    min-height: 6em;
+    max-height: 6em;
+    width: 100%;
+    background-size: cover;
+    background-color: #FA7152;
+}
+
+aside>.side-content .host-gallery>h2.image-placeholder-text {
+    padding-left: 1em;
+    font-size: 1.8em;
+    color: #F4F4F2;
+}
+
+aside>.side-content .host-description {
+    width: 100%;
+    height: 79.94%;
+    position: absolute;
+    background-color: #F4F4F2;
+}
+
+aside>.side-content .host-description>.host-description__item {
+    align-self: flex-start;
+    display: flex;
+    flex: 1 0 0%;
+    border-bottom: 2px dashed #EAEBEC;
+    padding-left: 4%;
+}
+
+aside>.side-content .host-description>.host-description__item:first-child {
+    border-bottom: none;
+    margin-bottom: 0.5em;
+    margin-top: 0.7em;
+}
+
+aside>.side-content .host-description>.host-description__item:last-child {
+    border-bottom: none;
+}
+aside>.side-content .host-description>.host-description__item>h2 {
+    font-size: 1.69em;
+}
+aside>.side-content .host-description>.host-description__item>.host-description__item__icon {
+    padding-left: 0.1em;
+    font-size: 1.25em;
+    padding-right: 0.4em;
+    color: rgba(161, 179, 191, 0.42);
+}
+
+
+
+aside>.side-content .host-description>.host-description__item>.host-description__item__content>.host-description__item__text>a {
+    color: #FA6868;
+}
+
+aside>.side-content .host-description>.host-description__item>.host-description__item__content>.host-description__item__text>a:hover {
+    color: #FA7152;
+}
+
+aside>.side-content .host-description>.host-description__item>.host-description__item__content>.host-description__item__text>a:visited {
+    color: #FA8468;
+}
+    
+
+
+
+aside>.side-content .host-description>.host-description__item>.host-description__item__content>.host-description__item__text{
+    color: #A2A9B6;
+
+}
+
+aside>.side-content.host-description__contact-options {
+    align-items: stretch;
+    align-self: baseline;
+}
+
+
+.fab-container {
+    bottom: -18px;
+    position: relative;
+    left: 259px;
+    overflow: visible!important;
+}
+
+.fab-container>.fab {
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    border: none;
+    background-color: #FA8468;
+    font-size: 2.5em;
+    color: #f4f4f4;
+    cursor: pointer;
+    box-shadow: -1px 1px 2px rgba(0,0,0,0.2);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.fab-container>.fab:hover,.fab-container>.fab:focus {
+    background-color: #FA7152;
+    color: #f0f0f0;
+    box-shadow: -1px 1px 4px rgba(0,0,0,0.3);
+}
+.fab-container>.fab:active {
+    background-color: #FA6868;
+    color: #EAEBEC;
+    box-shadow: -1px 1px 5px rgba(0,0,0,0.4);
+}
