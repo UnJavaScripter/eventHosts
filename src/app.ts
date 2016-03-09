@@ -2,6 +2,7 @@ import {bootstrap} from 'angular2/platform/browser';
 import {EventHostsApp} from './app/event-hosts';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {provide} from 'angular2/core';
+import 'rxjs/Rx';
 
 bootstrap(EventHostsApp, [
     ROUTER_PROVIDERS,

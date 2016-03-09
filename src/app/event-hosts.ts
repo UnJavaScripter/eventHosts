@@ -4,11 +4,13 @@
 //console
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {Map} from './components/map/map'
+import {Map} from './components/map/map';
+import {DataService} from './services/data-service/data-service';
+import {HTTP_PROVIDERS}    from 'angular2/http';
 
 @Component({
     selector: 'event-hosts-app',
-    providers: [],
+    providers: [DataService, HTTP_PROVIDERS],
     templateUrl: 'app/event-hosts.html',
     directives: [ROUTER_DIRECTIVES, Map],
     pipes: [],
@@ -23,117 +25,15 @@ export class EventHostsApp {
     hostToShowOnMap: Object = {};
     clearSelectedHost: boolean;
 
-    constructor() {
-        this.hostsArray = [
-            {
-                "name": "Atom House",
-                "location": {
-                    "geographical": {
-                        "country": {
-                            "name": "colombia",
-                            "code": "co"
-                        },
-                        "city": "bogota",
-                        "state": "bogota"
-                    },
-                    "coordinates": {
-                        "lat": 4.651602,
-                        "lng": -74.057372
-                    },
-                    "address": "Carrera 7 # 69-17"
-                },
-                "capacity": 50,
-                "openingHours": {
-                    "from": "7:00am",
-                    "to": "9:00pm"
-                },
-                "features": [
-                    "Projector",
-                    "WiFi",
-                    "Bathrooms"
-                ],
-                "contact": {
-                    "email": "atomhouse@socialatomgroup.com"
-                },
-                "website": "http://atomhouse.com",
-                "pics": {
-                    "header": "http://photos2.meetupstatic.com/photos/event/a/8/0/1/highres_434923009.jpeg"
-                }
-            },
-            {
-                "name": "HubBOG",
-                "location": {
-                    "geographical": {
-                        "country": {
-                            "name": "colombia",
-                            "code": "co"
-                        },
-                        "city": "bogota",
-                        "state": "bogota"
-                    },
-                    "coordinates": {
-                        "lat": 4.684663,
-                        "lng": -74.052131
-                    },
-                    "address": "Calle 98 #18-71"
-                },
-                "capacity": 30,
-                "openingHours": {
-                    "from": "6:00am",
-                    "to": "9:00pm"
-                },
-                "features": [
-                    "Projector",
-                    "WiFi",
-                    "Bathrooms"
-                ],
-                "contact": {
-                    "email": "info@hubbog.com",
-                    "phone": "+57 (1) 6014826"
-                },
-                "website": "http://hubbog.com",
-                "pics": {
-                    "header": "http://welcu-assets.s3.amazonaws.com/uploads/other/wp/Hubbog.jpg"
-                }
-            },
-            {
-                "name": "Wayra",
-                "location": {
-                    "geographical": {
-                        "country": {
-                            "name": "colombia",
-                            "code": "co"
-                        },
-                        "city": "bogota",
-                        "state": "bogota"
-                    },
-                    "coordinates": {
-                        "lat": 4.689833,
-                        "lng": -74.070925
-                    },
-                    "address": "Carrera 67 # 100-20"
-                },
-                "capacity": 30,
-                "openingHours": {
-                    "from": "8:00am",
-                    "to": "6:00pm"
-                },
-                "features": [
-                    "Projector",
-                    "WiFi",
-                    "Bathrooms"
-                ],
-                "contact": {
-                    "email": "presswayraco@wayra.org",
-                },
-                "website": "http://wayra.co/es/co",
-                "pics": {
-                    "header": "http://www.tropicalgringo.com/web/wp-content/uploads/2014/02/IMG_0206.jpg"
-                }
-            },
-
-            
-        ]
+    constructor(_dataService_: DataService) {
+        _dataService_
+            .getData()
+            .subscribe(
+                data => this.hostsArray = data,
+                err => console.log(err),
+                () => console.log('Completed!')
+            )
+        
     }
 
     selected_from_map(host: Object) {

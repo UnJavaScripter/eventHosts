@@ -1,0 +1,28 @@
+/*
+COLOR_GRAY_1 = #222323
+COLOR_GRAY_2 = #2b2d2d
+
+COLOR_GRAY_4 = #656565
+COLOR_GRAY_5 = #e5e6e7
+*/
+
+body {
+    background-color: #2b2d2d;
+    color: #e5e6e7;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.text-bold{
+    font-weight: bold; 
+}
+
+
+.color-gray-4{
+    color: #656565;
+}
+
+input, button {
+    outline: none;
+}
