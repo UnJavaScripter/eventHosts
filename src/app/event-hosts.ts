@@ -26,6 +26,7 @@ export class EventHostsApp {
     clearSelectedHost: boolean;
 
     constructor(_dataService_: DataService) {
+
         _dataService_
             .getData()
             .subscribe(

@@ -17,6 +17,7 @@ export class Map {
     zone: NgZone;
     @Input() clearSelected: boolean;
     @Input() selectThis: Object = {};
+    public a;
     
 
     // only called if there is an @input variable set by parent.
@@ -27,6 +28,9 @@ export class Map {
         if (changes["selectThis"] && changes["selectThis"].currentValue.name) {
             this.setMarkersVisibility(changes["selectThis"].currentValue);
             this.selectThis = {};
+        }
+        if (changes["hosts"]) {
+            this.paintMarkers(this.window, this.map);
         }
 
     }
@@ -39,20 +43,23 @@ export class Map {
         }
         this.map = {};
 
-        setTimeout(function() {
-            this.map = new this.window.google.maps.Map(document.getElementById('map'), {
+        setTimeout(() => {
+
+            this.map = new this.window["google"].maps.Map(document.getElementById('map'), {
                 center: { lat: 4.651602, lng: -74.057372 },
                 zoom: 11
             });
-            this.map.addListener('click', function(e) {
+            this.map["addListener"]('click', function(e) {
                 that.setMarkersVisibility(undefined);
                 that.emitClick({});
             });
-            that.paintMarkers(that.window, this.map);
-        }, 0);
 
+        }, 0);
     }
+
+
     emitClick(hostObject: Object) {
+        // http://blog.thoughtram.io/angular/2016/01/22/understanding-zones.html && http://blog.thoughtram.io/angular/2016/02/01/zones-in-angular-2.html
         this.zone.run(() => {
             this.aHostWasSelected.next(hostObject);
         })

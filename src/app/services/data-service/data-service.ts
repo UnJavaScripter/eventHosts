@@ -18,9 +18,9 @@ export class DataService {
 
     getData() {
         let that = this;
-        //const URL = 'http://eventhosts-unjavascripter.rhcloud.com/api/hosts';
-        const URL = '../../../hosts_data.json';
-
+        const URL = 'http://eventhosts-unjavascripter.rhcloud.com/api/hosts';
+        //const URL = '../../../hosts_data.json';
+        
         // return an observable
         return this.http.get(URL)
             .map(res => res.json())
